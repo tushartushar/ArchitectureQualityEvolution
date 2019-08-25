@@ -5,7 +5,7 @@ A utility program to analyze architecture quality evolution for Java programs. I
 ### Prerequisite and assumptions
 1. It assumes you have DesigniteJava Enterprise edition on your machine with Java 8+ installed. You may download DesigniteJava Enterprise from [Designite website](http://www.designite-tools.com/designitejava).
 1. It assumes that your code is in a git repository. It copies the source code folder specified by you to a temporary location, checkout different versions of the repository and analyzes them.
-1. It attempts to build your code using maven using ```mvn clean install -DskipTests```. If you are not using maven or your build requires much more complex setup, you may change the implementation of ```analyze_project._build_project``` method. The tool requires classpath folders to analyze and resolves symbols correctly. The tool finds all the classpath folders if they are present in the provided source code folder.
+1. It attempts to build your code using maven using ```mvn clean install -DskipTests```. If you are not using maven or your build requires much more complex setup, you may change the implementation of ```analyze_project._build_project``` method. The tool requires classpath folders to analyze and resolve symbols correctly. The tool finds all the classpath folders if they are present in the provided source code folder.
 1. The utility is dependent on following modules:
     - matplotlib
     - networkx
@@ -13,7 +13,14 @@ A utility program to analyze architecture quality evolution for Java programs. I
     - PyDriller
 
 ### How to run
-Specify the following parameters in ```main.py``` and run the python file using python3
+Specify the following parameters in ```main.py```
+- Full path of DesigniteJava
+- Full path of source code folder
+- Full path of temporary folder
+- Full path of output folder (don't keep any other files/folders in this folder; this utility will delete all of them before generating result of the analysis)
+- Number of versions to analyze
+
+Then, run the python file using python3
 
 ```
 python3 main.py
@@ -27,7 +34,7 @@ This utility produces following csv files.
 It also generates and stores following plots.
 - Architecture smell density vs versions
 - Architecture smell distribution vs versions
-- Component dependency structure - It is generated for all analyzed versions but only when DesigniteJava detects a dense structure architecture smell in that version.
+- Component dependency structure. It is generated for all analyzed versions but only when DesigniteJava detects a dense structure architecture smell in that version.
 
 When analyzed Jenkins, the utility produced the output presented below.
 
