@@ -3,7 +3,7 @@ A utility program to analyze architecture quality evolution for Java programs. I
 
 ## How to run
 ### Prerequisite and assumptions
-1. It assumes you have DesigniteJava Enterprise edition on your machine with Java 8+ installed. You may download DesigniteJava Enterprise from [Designite website](http://www.designite-tools.com/designitejava).
+1. This utility assumes you have DesigniteJava Enterprise edition on your machine with Java 8+ installed. You may download DesigniteJava Enterprise from [Designite website](http://www.designite-tools.com/designitejava). Also, it is assumed that each individual commit that is being analyzed contains less than 50,000 LOC. The trial version of DesigniteJava does not export the analysis results if LOC in the analyzed version crosses this threshold. If you wish to analyze more than 50,000 LOC then consider buying DesigniteJava Enterprise license. If you are an academic researcher, you may request for a free academic license.
 1. It assumes that your code is in a git repository. It copies the source code folder specified by you to a temporary location, checkout different versions of the repository and analyzes them.
 1. It attempts to build your code using maven using ```mvn clean install -DskipTests```. If you are not using maven or your build requires much more complex setup, you may change the implementation of ```analyze_project._build_project``` method. The tool requires classpath folders to analyze and resolve symbols correctly. The tool finds all the classpath folders if they are present in the provided source code folder.
 1. The utility is dependent on following modules:
